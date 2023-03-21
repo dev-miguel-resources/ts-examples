@@ -12,18 +12,18 @@ class Teacher {
     // any: acepta un valor de cualquier tipo
     // readonly: es un dato o definición de solo lectura
 
-    /*name: string
+    name: string
     lastname!: string 
-    cod?: number*/
+    cod?: number
     //readonly fullname: string
 
     // forma 1 de inicialización
-    /*constructor(name: string, lastname: string, cod: number) {
+    constructor(name: string, lastname: string, cod: number) {
         this.name = name
         this.lastname = lastname
         this.cod = cod
         //this.fullname = `${this.name} ${this.lastname}`
-    }*/
+    }
 
     // constructor: es lo primero que se ejecuta en una clase
     /*constructor() {
@@ -38,13 +38,24 @@ class Teacher {
     }*/
 
     // forma 2 de inicialización
-    constructor(public name: string, public lastname: string, public cod: number) {
+    /*constructor(public name: string, public lastname: string, public cod: number) {
 
-    }
+    }*/
+
+    // forma 3 de inicialización
+    /*name = "Hector"
+    lastname = "Salas"
+    cod = 12
+
+    constructor(name: string, lastname: string, cod: number) {
+        this.name = name
+        this.lastname = lastname
+        this.cod = cod
+    }*/
 
 }
 
 // Instancia de Teacher
-const teacher: Teacher = new Teacher("Hector", "Salas", 12)
+const teacher: Teacher = new Teacher("Mijael", "Salas", 12)
 console.log(teacher)
 //console.log(teacher.name)
