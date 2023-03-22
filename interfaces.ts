@@ -11,7 +11,7 @@ interface ITeacher {
 //console.log(teacher)
 
 // forma 4 de inicialización
-class TeacherExample {
+class Teacher {
 
     name: string
     lastname: string
@@ -26,5 +26,5 @@ class TeacherExample {
 
 }
 
-const teacherObj = new TeacherExample({ lastname: "Salas", name: "Mijael", cod: 12 })
+const teacher = new Teacher({ lastname: "Salas", name: "Mijael", cod: 12 })
 console.log(teacher)
