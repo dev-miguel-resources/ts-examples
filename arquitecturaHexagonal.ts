@@ -11,12 +11,13 @@ abstract class TeacherAbs {
     validation(teacher: Teacher) {
         return true
     }*/
-} 
+}
 
 // Domain: Repository
 // design pattern: facade
 interface TeacherRepository {
-    insert(teacher: Teacher): Teacher 
+    insert(teacher: Teacher): Teacher
+    validationNationality(teacher:Teacher): boolean
 }
 
 /*interface CrudRepository {
@@ -45,7 +46,7 @@ interface InsertTeacherRepository {
 
 // Domain
 // Data Model
-// Domain Model
+// Domain Model (
 class Teacher {
 
     constructor(public name: string, public lastname: string, public cod: number) {
@@ -56,24 +57,45 @@ class Teacher {
 // application
 class TeacherApplication {
 
+    // design pattern: injection dependency
+    constructor(private infraestructure: TeacherRepository) {
+
+    }
+
     insert(teacher: Teacher) {
 
-        const infraestructure: TeacherInfraestructure = new TeacherInfraestructure()
+        const isValid = this.infraestructure.validationNationality(teacher)
+
+        if (isValid) {
+            const insertedTeacher = this.infraestructure.insert(teacher)
+            return insertedTeacher
+        }
+
+        return null
+
+    
+        /*const infraestructure: TeacherInfraestructure = new TeacherInfraestructure()
         const insertedTeacher = infraestructure.insert(teacher)
-        return insertedTeacher
+        return insertedTeacher*/
     }
 }
 
 // infraestructure
-class TeacherInfraestructure extends TeacherAbs  {
+class TeacherInfraestructure extends TeacherAbs {
 
     insert(teacher: Teacher) {
-       return teacher 
-    }    
+        return teacher
+    }
+
+    validationNationality(teacher: Teacher) {
+        return true
+    }
 }
 
 const teacher: Teacher = new Teacher("Miguel", "Chamorro", 12)
-const infraestructure: TeacherInfraestructure = new TeacherInfraestructure()
-const application: TeacherApplication = new TeacherApplication()
+const infraestructure: TeacherRepository = new TeacherInfraestructure()
+const application: TeacherApplication = new TeacherApplication(infraestructure)
 console.log(application.insert(teacher))
 //console.log(teacher)
+
+
