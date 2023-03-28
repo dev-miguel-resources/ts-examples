@@ -87,7 +87,7 @@ class TeacherInfraestructure extends TeacherAbs {
         return teacher
     }
 
-    validationNationality(teacher: Teacher) {
+    validationNationality(_teacher: Teacher) {
         return true
     }
 }
